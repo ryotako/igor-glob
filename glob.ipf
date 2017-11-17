@@ -67,7 +67,6 @@ static Function/WAVE glob_(root, pattern)
 			// matching recursively
 			
 			WAVE/T folders = MatchedFolders(root, StringFromList(0, pattern, ":"))
-
 			Variable i
 			for(i = 0; i < DimSize(folders, 0); i += 1)
 				Concatenate/T/NP {glob_(folders[i], pattern[strsearch(pattern, ":", 0)+1, inf])}, buffer
@@ -77,7 +76,7 @@ static Function/WAVE glob_(root, pattern)
 	endif
 	
 	// global matching pattern ** is equivalent to *:**
-	if(strsearch(pattern, "*", 0) >= 0 && strsearch(pattern, "*", 0) == strsearch(pattern, "**", 0))
+	if(strsearch(StringFromList(0, pattern, ":"), "**", 0) >= 0)
 		Concatenate/T/NP {glob_(root, ReplaceString("**", pattern, "*:**", 0, 1))}, buffer
 	endif	
 	
