@@ -31,13 +31,7 @@ static Function/WAVE glob_(root, pattern)
 	root = RemoveEnding(root, ":") + ":"
 
 	Make/FREE/T/N=0 buffer
-	
-	// ** mathces an empty string	
-	if(GrepString(pattern, "^\\*\\*+$"))
-		InsertPoints 0, 1, buffer
-		buffer = root		
-	endif
-	
+		
 	// leaf / inner node of matching algorithm
 	if(ItemsInList(pattern, ":") < 2)
 		// leaf node of matching algorithm
