@@ -91,13 +91,13 @@ static Function Glob_ParentPaths()
 
 	SetDataFolder root:Packages:glob_test:folder:sub:subsub
 	
-	Make/FREE/T/N=1 expected = {"root:Packages:glob_test:folder:sub:subsub"}
+	Make/FREE/T/N=1 expected = {"::subsub"}
 	CHECK_EQUAL_TEXTWAVES(  expected, glob("::*") )
 
-	Make/FREE/T/N=1 expected = {"root:Packages:glob_test:folder:sub"}
+	Make/FREE/T/N=1 expected = {":::sub"}
 	CHECK_EQUAL_TEXTWAVES(  expected, glob(":::*") )
 
-	Make/FREE/T/N=1 expected = {"root:Packages:glob_test:folder:sub:subsub"}
+	Make/FREE/T/N=1 expected = {"::subsub::subsub::subsub::subsub"}
 	CHECK_EQUAL_TEXTWAVES(  expected, glob("::*::*::*::*") )
 
 	KillDataFolder root:Packages:glob_test

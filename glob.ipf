@@ -1,6 +1,6 @@
 #pragma rtGlobals=3		// Use modern global access method and strict wave access.
 #pragma ModuleName = glob
-#pragma version = 0.0
+#pragma version = 0.1
 
 Function/WAVE glob(pattern)
 	String pattern
@@ -48,19 +48,9 @@ static Function/WAVE glob_(root, pattern)
 		
 		// refers a parent folder (using ::) or not
 		if(StringMatch(pattern, ":*")) 
-			// matching by using a parent of the current root
+			// matching with a parent path
 			
-			// use absolute path to refer the parent folder
-			if(StringMatch(root, ":*"))
-				root = RemoveEnding(GetDataFolder(1), ":") + root
-			endif
-			root = root[0, strsearch(root, ":", strlen(root)-2, 1)]
-			
-			// a parent of root is root itself 
-			if(strlen(root) == 0)
-				root = "root:"
-			endif
-			
+			root += SelectString(StringMatch(root, "root:"), ":", "") // the root of root: is root: itself			
 			Concatenate/T/NP {glob_(root, pattern[1, inf])}, buffer					
 		
 		else
