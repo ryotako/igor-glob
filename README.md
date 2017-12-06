@@ -7,7 +7,7 @@ Glob returns the path names of all objects matching pattern as a text wave, wher
 - `*` can match any string of characters not containing `:`
 - `**` matches any string of characters containing `:` 
 
-# Example
+## Example
 
 * root (current folder)
   * folder1
@@ -23,3 +23,6 @@ glob("root:folder*") //-> {"root:folder1", "root:folder2"}
 glob("root:**1") //-> {"root:folder1", "root:folder1:subfolder1", "root:folder2:subfolder1"}
 glob(":**:V_flag") // -> {":folder1:subfolder1:V_flag"}
 ```
+
+## Test
+ This function is tested by [igor-unit-testing-framework](https://github.com/t-b/igor-unit-testing-framework).
