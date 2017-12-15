@@ -2,7 +2,7 @@
 
 # igor-glob
 
-Glob returns the path names of all objects matching pattern as a text wave, where "objects" means waves, global variables, global string and data folders.
+Glob returns the path names of all objects matching pattern as a text wave, where "objects" means waves, global variables, global strings and data folders.
 
 - `*` can match any string of characters not containing `:`
 - `**` matches any string of characters containing `:` 
